@@ -14,7 +14,8 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 install_requires = [
     "jsonschema",
     "numpy",
-    "onnxruntime",
+    "onnxruntime ; sys_platform != 'darwin' and platform_machine != 'arm64'",
+    "onnxruntime-silicon ; sys_platform == 'darwin' and platform_machine == 'arm64'",
     "opencv-python-headless",
     "pillow",
     "pooch",
