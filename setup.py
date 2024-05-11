@@ -36,7 +36,10 @@ extras_require = {
         "twine",
         "wheel",
     ],
-    "cpu": ["onnxruntime"],
+    "cpu": [
+        "onnxruntime ; sys_platform != 'darwin' or platform_machine != 'arm64'",
+        "onnxruntime-silicon ; sys_platform == 'darwin' and platform_machine == 'arm64'",
+    ],
     "gpu": ["onnxruntime-gpu"],
     "rocm": ["onnxruntime-rocm"],
     "cli": [
